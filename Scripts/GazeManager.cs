@@ -1,4 +1,10 @@
-﻿using System;
+﻿// <copyright file="GazeManager.cs">
+// Copyright (c) 2017 All Rights Reserved
+// </copyright>
+// <author>TURCHI Nicolas</author>
+// <date>04/27/2017 15:00 AM </date>
+
+using System;
 using UnityEngine;
 
 namespace Holosly
@@ -9,7 +15,7 @@ namespace Holosly
     public class GazeManager : Singleton<GazeManager>
     {
         /// <summary>
-        /// Rayon se dirigeant là ou la tête de l'utilisateur est dirigée
+        /// Rayon se dirigeant là où la tête de l'utilisateur est dirigée
         /// </summary>
         public Ray UserHeadRay { get; set; }
 
@@ -68,28 +74,28 @@ namespace Holosly
             // Nous récupérons la position actuelle de la tête de l'utilisateur dans l'espace, c'est la source du rayon
             Vector3 userHeadOrigin = Camera.main.transform.position;
 
-            // Nous définissons le rayons à partir des deux valeurs définis ci-dessus
+            // Nous créeons le rayon à partir des deux valeurs définis ci-dessus
             UserHeadRay = new Ray(userHeadOrigin, userHeadDirection);
 
             // Les informations que l'on va récupérer sur l'objet touché par le rayon
             RaycastHit hitInfo;
 
-            // Nous testons si le rayons touche un GameObject à une distance maximum de 5 mêtres
+            // Nous testons si le rayon touche un GameObject à une distance maximum de 10 mêtres
             if (Physics.Raycast(UserHeadRay, out hitInfo, maxDistance: 10f))
             {
-                // On enregistre le gameobject touché par le regard de l'utilisateur
+                // On enregistre le Gameobject touché par le rayon provenant du regard de l'utilisateur
                 this.GameObjectFocused = hitInfo.transform.gameObject;
 
-                // Vecteur normal du gameObject focus
+                // Vecteur normal du gameObject focus (Vecteur normal = Vecteur perpendiculaire à la surface de l'objet)
                 Vector3 normalVector = hitInfo.normal;
 
-                // Position du rayon du regard dans l'espace
+                // Position du Gameobject dans l'espace
                 Vector3 position = hitInfo.point;
 
                 // On notifie le curseur de ces changements
                 _cursor.OnGameObjectFocused(normalVector, position);
             }
-            else
+            else // Aucun GameObject n'est touché
             {
                 // On set le gameObject actuellement visé à null
                 this.GameObjectFocused = null;

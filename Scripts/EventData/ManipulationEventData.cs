@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿// <copyright file="ManipulationEventData.cs">
+// Copyright (c) 2017 All Rights Reserved
+// </copyright>
+// <author>TURCHI Nicolas</author>
+// <date>04/27/2017 15:00 AM </date>
+
+using UnityEngine;
 
 namespace Holosly.EventData
 {

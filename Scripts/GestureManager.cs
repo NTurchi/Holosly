@@ -1,4 +1,10 @@
-﻿using Holosly.EventData;
+﻿// <copyright file="GestureManager.cs">
+// Copyright (c) 2017 All Rights Reserved
+// </copyright>
+// <author>TURCHI Nicolas</author>
+// <date>04/27/2017 15:00 AM </date>
+
+using Holosly.EventData;
 using UnityEngine;
 using UnityEngine.VR.WSA.Input;
 
